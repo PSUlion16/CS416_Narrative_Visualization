@@ -43,7 +43,20 @@
                             .attr("cy", function(d) {return cys(+d.value);})
                             .attr("r", 1);
 				
-				console.log("hehhhhhh");
+				// create y-axis
+				d3.select("svg").append("g")
+				  .attr("transform","translate("+margin+","+margin+")")
+				  .call(d3.axisLeft(cys)
+						  .tickValues([-1.5, -1, -.5, 0, .5, 1, 1.5])
+						  .tickFormat(d3.format(".0f")));
+
+				// create x-axis
+				d3.select("svg").append("g")
+				  .attr("transform","translate("+margin+","+(height+margin)+")")
+				  .call(d3.axisBottom(cxs)
+						  .tickValues([1880,1900,1920,1940,1960,1980,2000,2020])
+						  .tickFormat(d3.format(".0f")));
+				
             }
         </script>
     </body>

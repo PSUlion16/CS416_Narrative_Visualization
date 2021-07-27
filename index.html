@@ -24,23 +24,28 @@
                 height = 400;
                 margin = 50;
                 cxs = d3.scaleLinear().domain([1880,2020]).range([0,width]);
-                cys = d3.scaleLinear().domain([-1.5,1.5]).range([height,0]);
-				console.log("HELLOoooo");
+                cys = d3.scaleLinear().domain([-2,2]).range([height,0]);
+				console.log(cxs(2020));
+				console.log(cxs(1880));
+				console.log(cys(-1.5));
+				console.log(cys(1.5));
+				console.log(cys(+"-1.5"));
                 // get data and wait for result  
                 const data = await d3.csv("global_air_ocean_temp_deviation.csv");
-				console.log("HELLO");
+
                 // Create an SVG to place scatterplot on for data
                 // convert string to integer using '+' notation on the data element
                 d3.select("svg")
-                    .attr("width",width + 2*margin)
-                    .attr("height",height + 2*margin)
+                    //.attr("width",width + 2*margin)
+                    //.attr("height",height + 2*margin)
                         .append("g")
                         .attr("transform", "translate("+margin+","+margin+")")
                         .selectAll().data(data).enter().append("circle")
                             .attr("cx", function(d) {return cxs(+d.year);})
                             .attr("cy", function(d) {return cys(+d.value);})
                             .attr("r", 10);
-				alert("Image is loaded3");
+				
+				console.log("hehhhhhh");
             }
         </script>
     </body>

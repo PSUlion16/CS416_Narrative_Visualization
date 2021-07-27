@@ -16,12 +16,12 @@
             <button>All Years</button>
             <button>></button>
         </div>
-        <svg style="display: block; margin-left: auto; margin-right: auto; width: 800px; height: 800px"></svg>
+        <svg style="display: block; margin-left: auto; margin-right: auto; width: 600px; height: 600px"></svg>
         <script>
             async function init() {
                 // Variables for the method
-                width = 700;
-                height = 700;
+                width = 500;
+                height = 500;
                 margin = 50;
                 cxs = d3.scaleLinear().domain([1880,2020]).range([0,width]);
                 cys = d3.scaleLinear().domain([-2,2]).range([height,0]);
@@ -48,7 +48,7 @@
 				  .attr("transform","translate("+margin+","+margin+")")
 				  .call(d3.axisLeft(cys)
 						  .tickValues([-1.5, -1, -.5, 0, .5, 1, 1.5])
-						  .tickFormat(d3.format(".0f")));
+						  .tickFormat(d3.format(".1f")));
 
 				// create x-axis
 				d3.select("svg").append("g")

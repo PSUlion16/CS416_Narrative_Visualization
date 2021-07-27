@@ -1,0 +1,13 @@
+h1 {
+  text-align: center;
+  color: black;
+  font: Arial, sans-serif;
+}
+circle {
+  fill: lightblue;
+  stroke: black;
+}
+.text-center {
+  text-align: center;
+  font: Arial, sans-serif;
+}

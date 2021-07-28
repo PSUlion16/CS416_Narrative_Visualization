@@ -30,6 +30,12 @@
                 // get data and wait for result  
                 data = await d3.csv("global_air_ocean_temp_deviation.csv");
 				
+				// create a tooltip
+				d3.select('body')
+					.append('div')
+					.attr('id', 'tooltip')
+					.attr('style', 'position: absolute; opacity: 0;');
+				
 				changeToState(1);
             }
 			
@@ -126,7 +132,8 @@
 				d3.select("svg").append("text")
 				  .attr("class", "ylabel")
 				  .attr("text-anchor", "end")
-				  .attr("y", (svgHeight/2) + svgMargin)
+				  .attr("y", 6)
+				  .attr("x", (svgWidth/2) + svgMargin)
 				  .attr("dy", ".75em")
 				  .attr("transform", "rotate(-90)")
 				  .text("Deviation from Average in Celcius");  

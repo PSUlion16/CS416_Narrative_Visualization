@@ -103,7 +103,11 @@
 				clearme();
 				
 				// Get the state for the filter ranges, execute associated method
-				if (state == 2) {
+				if (state == 1) {
+					d3.select('h2').text("Introduction");
+					// insert the introduction
+				}
+				else if (state == 2) {
 					d3.select('h2').text("Years 1880-1920");
 					drawSVG(1880,1920);
 				} else if (state == 3) {

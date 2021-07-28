@@ -11,20 +11,19 @@
         <h1>World Average Temperature From Mean (C), 1880-2020</h1>
         <div class="main-buttons">
             <button><</button>
-            <button onclick='clear()'>1880-1920</button>
+            <button onclick='clearme()'>1880-1920</button>
             <button>1921-1980</button>
             <button>1981-2020</button>
             <button>All Years</button>
             <button>></button>
         </div>
         <svg class="main-svg"></svg>
-        <script>
-			function clear() {
-				alert("Button Pressed");
-				//console.log("CLEAR HIT");
+		<script>
+			function clearme() {
+				console.log("CLEAR HIT");
 				//d3.selectAll("svg > *").remove();
 			}
-			
+		
             async function init() {
                 // Variables for the method
                 width = 500;

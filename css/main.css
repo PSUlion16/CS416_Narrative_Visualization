@@ -7,6 +7,7 @@ circle {
   fill: lightblue;
   stroke: black;
 }
+/*
 #tooltip {
   text-align: center;
   opacity: 0;
@@ -16,7 +17,7 @@ circle {
   border-style: solid;
   border-width: 2px;
   border-radius: 8px;
-}
+}*/
 .main-buttons {
   text-align: center;
   font: Arial, sans-serif;

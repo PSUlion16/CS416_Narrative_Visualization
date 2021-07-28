@@ -19,21 +19,6 @@
         </div>
         <svg style="display: block; margin-left: auto; margin-right: auto; width: 600px; height: 600px"></svg>
         <script>
-			// mousover function
-			var mouseover = function(d) {
-				d3.select('#tooltip').transition().duration(200).style('opacity', 1).text(d)
-			}
-			
-			// mouse move function
-			var mousemove = function(d) {
-				d3.select('#tooltip').style('left', (d3.event.pageX+10) + 'px').style('top', (d3.event.pageY+10) + 'px')
-			}
-
-			// set tooltip opacity to 0 when mouse leaves
-			var mouseout = function(d) {
-				d3.select('#tooltip').style('opacity', 0)
-			}
-		
             async function init() {
                 // Variables for the method
                 width = 500;
@@ -46,7 +31,7 @@
                 const data = await d3.csv("global_air_ocean_temp_deviation.csv");
 
 				// create a tooltip
-				d3.select('svg')
+				d3.select('body')
 					.append('div')
 					.attr('id', 'tooltip')
 					.attr('style', 'position: absolute; opacity: 0;');
@@ -60,11 +45,13 @@
                             .attr("cx", function(d) {return cxs(+d.year);})
                             .attr("cy", function(d) {return cys(+d.value);})
                             .attr("r", 7)
-						.on("mouseover", mouseover)
-						.on("mousemove", mousemove)
-						.on("mouseout", mouseout);
+						.on("mouseover", function(d) {
+							d3.select('#tooltip').transition().duration(200).style('opacity', 1).text(d.year)
+						})
+						.on("mouseout", function(d) {
+							d3.select('#tooltip').style('opacity', 0)
+						});
 				
-				// HELOOOOOOOOOO
 				// create y-axis
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+margin+","+margin+")")

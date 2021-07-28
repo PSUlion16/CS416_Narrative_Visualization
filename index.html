@@ -136,6 +136,9 @@
 								.html("Year: " + d.year + "<br/>" + "Deviation(C): " + d.value);
 						});
 				
+				// Create title heading
+				d3.select("svg").append("title").text("MY TITLE");
+				
 				// create y-axis
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+svgMargin+","+svgMargin+")")

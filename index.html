@@ -46,7 +46,11 @@
                             .attr("cy", function(d) {return cys(+d.value);})
                             .attr("r", 5)
 						.on("mouseover", function(d) {
-							d3.select('#tooltip').transition().duration(200).style('opacity', 1).text(d.year)
+							d3.select('#tooltip').transition().duration(200)
+								.style('opacity', 1)
+								.style("left", (d3.event.pageX) + "px")             
+								.style("top", (d3.event.pageY - 28) + "px")
+								.text(d.year)
 						})
 						.on("mouseout", function(d) {
 							d3.select('#tooltip').style('opacity', 0)

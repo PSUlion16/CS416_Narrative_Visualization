@@ -39,7 +39,7 @@
 				// create a tooltip
 				d3.select('body')
 					.append('div')
-					.attr('id', 'tooltip')
+					.attr('id', 'tooltip') 
 					.attr('style', 'position: absolute; opacity: 0;');
 
                 // Create an SVG to place scatterplot on for data
@@ -95,6 +95,8 @@
 			// Populate the SVG with the given parameters - executed from main buttons
 			function fillSVG(newstate) {
 				state = newstate;
+				clearme();
+				
 				console.log(state);
 			}
 			

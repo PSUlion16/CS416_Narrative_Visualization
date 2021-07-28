@@ -19,17 +19,6 @@
         </div>
         <svg style="display: block; margin-left: auto; margin-right: auto; width: 600px; height: 600px"></svg>
         <script>
-			// add a tooltip
-			var tooltip = d3.select("body")
-			.append("div")
-			.style("opacity", 1)
-			.attr("class", "tooltip")
-			.style("background-color", "white")
-			.style("border", "solid")
-			.style("border-width", "1px")
-			.style("border-radius", "5px")
-			.style("padding", "10px")
-
 			// mousover function
 			var mouseover = function(d) {
 				d3.select('#tooltip').transition().duration(200).style('opacity', 1).text(d)
@@ -73,7 +62,7 @@
                             .attr("r", 7)
 						.on("mouseover", mouseover)
 						.on("mousemove", mousemove)
-						.on("mouseout", mouseleave);
+						.on("mouseout", mouseout);
 				
 				// HELOOOOOOOOOO
 				// create y-axis

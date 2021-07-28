@@ -9,16 +9,17 @@
     
     <body onload='init()'>
         <h1 class="main-header">World Average Temperature From Mean (C), 1880-2020</h1>
+		<h2 class="main-header"> Narrative Visualization created by Chris Toombs for CS416 UIUC</h2>
+		<h2 class="main-header"> Data sourced from https://www.ncdc.noaa.gov/cag/global/time-series</h2>
         <div class="main-buttons">
             <button onclick='moveStateBack()'><</button>
-			<button id="1" onclick='changeToState(1)'>Introduction</button>
-            <button id="2" onclick='changeToState(2)'>1880-1920</button>
-            <button id="3" onclick='changeToState(3)'>1921-1980</button>
-            <button id="4" onclick='changeToState(4)'>1981-2020</button>
-            <button id="5" onclick='changeToState(5)'>All Years</button>
+            <button id="1" onclick='changeToState(1)'>1880-1920</button>
+            <button id="2" onclick='changeToState(2)'>1921-1980</button>
+            <button id="3" onclick='changeToState(3)'>1981-2020</button>
+            <button id="4" onclick='changeToState(4)'>All Years</button>
             <button onclick='moveStateForward()'>></button>
         </div>
-		<h2 class="svg-header"></h2>
+		<h2 id="infoHeader" class="svg-header"></h2>
         <svg class="main-svg"></svg>
 		<script>
 			// Global variables
@@ -49,7 +50,7 @@
 			
 			// Invoked when forward button is pressed
 			function moveStateForward() {
-				if (state < 5) {
+				if (state < 4) {
 					state = state + 1;
 					changeToState(state);
 				}
@@ -63,22 +64,16 @@
 				
 				// Get the state for the filter ranges, execute associated method
 				if (state == 1) {
-					d3.select('h2').text("Introduction");
-					d3.select("svg")
-                        .append("text")
-						.attr("text", "THIS IS THE INTRO");
-				}
-				else if (state == 2) {
-					d3.select('h2').text("Years 1880-1920");
+					d3.select('#infoHeader').text("Years 1880-1920");
 					drawSVG(1880,1920);
-				} else if (state == 3) {
-					d3.select('h2').text("Years 1921-1980");
+				} else if (state == 2) {
+					d3.select('#infoHeader').text("Years 1921-1980");
 					drawSVG(1921,1980);
-				} else if (state == 4) {
-					d3.select('h2').text("Years 1981-2020");
+				} else if (state == 3) {
+					d3.select('#infoHeader').text("Years 1981-2020");
 					drawSVG(1981,2020);
-				} else if (state == 5) {
-					d3.select('h2').text("All recorded years (1880-2020) ");
+				} else if (state == 4) {
+					d3.select('#infoHeader').text("All recorded years (1880-2020) ");
 					drawSVG(1880,2020);
 				}
 			}

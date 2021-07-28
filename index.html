@@ -65,8 +65,8 @@
 				if (state == 1) {
 					d3.select('h2').text("Introduction");
 					d3.select("svg")
-                        .append("div")
-						.text("THIS IS THE INTRO");
+                        .append("text")
+						.attr("text", "THIS IS THE INTRO");
 				}
 				else if (state == 2) {
 					d3.select('h2').text("Years 1880-1920");

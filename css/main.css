@@ -15,6 +15,12 @@ circle {
   border-width: 2px;
   border-radius: 8px;
 }
+.main-header {
+  text-align: center;
+  color: black;
+  font: Arial, sans-serif;
+  text-decoration: underline;
+}
 .main-buttons {
   text-align: center;
   font: Arial, sans-serif;
@@ -25,4 +31,9 @@ circle {
   margin-right: auto;
   width: 600px;
   height: 600px;
+}
+.svg-header {
+  text-align: center;
+  color: black;
+  font: Arial, sans-serif;
 }

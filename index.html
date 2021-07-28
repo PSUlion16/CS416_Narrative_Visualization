@@ -9,7 +9,7 @@
     
     <body onload='init()'>
         <h1>World Average Temperature From Mean (C), 1880-2020</h1>
-        <div class="text-center">
+        <div class="main-buttons">
             <button><</button>
             <button>1880-1920</button>
             <button>1921-1980</button>
@@ -17,7 +17,7 @@
             <button>All Years</button>
             <button>></button>
         </div>
-        <svg style="display: block; margin-left: auto; margin-right: auto; width: 600px; height: 600px"></svg>
+        <svg id="main-svg"></svg>
         <script>
             async function init() {
                 // Variables for the method
@@ -33,8 +33,8 @@
 				// create a tooltip
 				d3.select('body')
 					.append('div')
-					.attr('id', 'tooltip')
-					.attr('style', 'position: absolute; opacity: 0; text-align: center;');
+					.attr('id', 'tooltip');
+					//.attr('style', 'position: absolute; opacity: 0; text-align: center;');
 
                 // Create an SVG to place scatterplot on for data
                 // convert string to integer using '+' notation on the data element

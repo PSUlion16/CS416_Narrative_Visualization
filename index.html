@@ -35,7 +35,6 @@
 					.append('div')
 					.attr('id', 'tooltip')
 					.attr('style', 'position: absolute; opacity: 0;');
-					//.attr('style', 'font: Arial, sans-serif; background: #4682b4; border-style: solid; border-width: 2px; border-radius: 8px;');
 
                 // Create an SVG to place scatterplot on for data
                 // convert string to integer using '+' notation on the data element
@@ -51,7 +50,7 @@
 								.style('opacity', 1);
 							d3.select('#tooltip')
 								.style("left", (d3.event.pageX) + "px")             
-								.style("top", (d3.event.pageY - 28) + "px")
+								.style("top", (d3.event.pageY - 50) + "px")
 								.text(d.year);
 						});
 				

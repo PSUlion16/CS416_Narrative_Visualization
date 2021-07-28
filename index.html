@@ -10,19 +10,19 @@
     <body onload='init()'>
         <h1>World Average Temperature From Mean (C), 1880-2020</h1>
         <div class="main-buttons">
-            <button><</button>
-            <button onclick='clearme()'>1880-1920</button>
-            <button>1921-1980</button>
-            <button>1981-2020</button>
-            <button>All Years</button>
-            <button>></button>
+            <button onclick='moveStateBack()'><</button>
+			<button onclick='fillSVG(1)'>Introduction</button>
+            <button onclick='fillSVG(2)'>1880-1920</button>
+            <button onclick='fillSVG(3)'>1921-1980</button>
+            <button onclick='fillSVG(4)'>1981-2020</button>
+            <button onclick='fillSVG(5)'>All Years</button>
+            <button onclick='moveStateForward()'>></button>
         </div>
         <svg class="main-svg"></svg>
 		<script>
-			function clearme() {
-				d3.selectAll("svg > *").remove();
-			}
-		
+			// Global variables
+			var state = 0;
+			
             async function init() {
                 // Variables for the method
                 width = 500;
@@ -73,6 +73,34 @@
 						  .tickFormat(d3.format(".0f")));
 				
             }
+			
+			// Invoked when back button is pressed
+			function moveStateBack() {
+				if (state > 1) {
+					state = state - 1;
+				}
+				console.log("moveStateBack: State == " + state);
+			}
+			
+			// Invoked when forward button is pressed
+			function moveStateForward() {
+				if (state < 5) {
+					state = state + 1;
+				}
+				console.log("moveStateForward: State == " + state);
+			}
+			
+			// Populate the SVG with the given parameters - executed from main buttons
+			function fillSVG(newstate) {
+				state = newstate;
+				console.log(state);
+			}
+			
+			// Function to clear the svg from the page and hide tooltip. This will not remove the svg
+			function clearme() {
+				d3.selectAll("svg > *").remove();
+				d3.select('#tooltip').style('opacity', 0);
+			}
         </script>
     </body>
 </html>

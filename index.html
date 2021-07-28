@@ -9,7 +9,6 @@
     
     <body onload='init()'>
         <h1 class="main-header">World Average Temperature From Mean (C), 1880-2020</h1>
-		<h3 class="main-header"> Narrative Visualization created by Chris Toombs for CS416 UIUC</h3>
 		<h3 class="main-header"> Data sourced from https://www.ncdc.noaa.gov/cag/global/time-series</h3>
         <div class="main-buttons">
             <button onclick='moveStateBack()'><</button>
@@ -135,6 +134,20 @@
 				  .attr("dy", ".75em")
 				  .attr("transform", "rotate(-90)")
 				  .text("Deviation from Average in Celcius");  
+				  
+				// Create Annotations
+				const tooltip_annot = [
+					{
+					  note: {
+						label: "Mouse over any data point for Year and Deviation values",
+						title: "Tooltips"
+					  },
+					  x: 100,
+					  y: 5,
+					}
+				]
+				  
+				d3.select("svg").append("g").call(d3.annotation().annotations(tooltip_annot))
 			}
 			
 			// Function to clear the svg from the page and hide tooltip. This will not remove the svg

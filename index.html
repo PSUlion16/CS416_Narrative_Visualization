@@ -27,57 +27,10 @@
 			
 			
             async function init() {
-                // Variables for the method
-                svgWidth = 500;
-                svgHeight = 500;
-                svgMargin = 50;
-                cxs = d3.scaleLinear().domain([1880,2020]).range([0,svgWidth]);
-                cys = d3.scaleLinear().domain([-2,2]).range([svgHeight,0]);
-				
                 // get data and wait for result  
                 data = await d3.csv("global_air_ocean_temp_deviation.csv");
 				
-				// Initial SVG Header init
-				d3.select('h2').text("Introduction");
-
-				// create a tooltip
-				d3.select('body')
-					.append('div')
-					.attr('id', 'tooltip') 
-					.attr('style', 'position: absolute; opacity: 0;');
-
-                // Create an SVG to place scatterplot on for data
-                // convert string to integer using '+' notation on the data element
-                d3.select("svg")
-                        .append("g")
-                        .attr("transform", "translate("+svgMargin+","+svgMargin+")")
-                        .selectAll().data(data).enter().append("circle")
-                            .attr("cx", function(d) {return cxs(+d.year);})
-                            .attr("cy", function(d) {return cys(+d.value);})
-                            .attr("r", 5)
-						.on("mouseover", function(d) {
-							d3.select('#tooltip').transition().duration(200)
-								.style('opacity', 1);
-							d3.select('#tooltip')
-								.style("left", (d3.event.pageX) + "px")             
-								.style("top", (d3.event.pageY - 50) + "px")
-								.html("Year: " + d.year + "<br/>" + "Deviation(C): " + d.value);
-						});
-				
-				// create y-axis
-				d3.select("svg").append("g")
-				  .attr("transform","translate("+svgMargin+","+svgMargin+")")
-				  .call(d3.axisLeft(cys)
-						  .tickValues([-1.5, -1, -.5, 0, .5, 1, 1.5])
-						  .tickFormat(d3.format(".1f")));
-
-				// create x-axis
-				d3.select("svg").append("g")
-				  .attr("transform","translate("+svgMargin+","+(svgHeight+svgMargin)+")")
-				  .call(d3.axisBottom(cxs)
-						  .tickValues([1880,1900,1920,1940,1960,1980,2000,2020])
-						  .tickFormat(d3.format(".0f")));
-				
+				changeToState(1);
             }
 			
 			// Invoked when back button is pressed
@@ -163,14 +116,14 @@
 						  .tickFormat(d3.format(".0f")));
 						  
 				// create x-axis labels
-				svg.append("text")
+				d3.select("svg").append("text")
 				  .attr("class", "xlabel")
 				  .attr("text-anchor", "end")
 				  .attr("x", svgWidth)
 				  .attr("y", svgHeight - 6)
 				  .text("Year");
 				  
-				svg.append("text")
+				d3.select("svg").append("text")
 				  .attr("class", "ylabel")
 				  .attr("text-anchor", "end")
 				  .attr("y", 6)

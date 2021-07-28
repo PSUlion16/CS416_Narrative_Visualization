@@ -64,7 +64,9 @@
 				// Get the state for the filter ranges, execute associated method
 				if (state == 1) {
 					d3.select('h2').text("Introduction");
-					// insert the introduction
+					d3.select("svg")
+                        .append("div")
+						.text("THIS IS THE INTRO");
 				}
 				else if (state == 2) {
 					d3.select('h2').text("Years 1880-1920");
@@ -128,7 +130,8 @@
 				  .attr("x", (svgWidth/2) + svgMargin)
 				  .attr("y", svgHeight + svgMargin + 35)
 				  .text("Year");
-				  
+				
+				// create y-axis label
 				d3.select("svg").append("text")
 				  .attr("class", "ylabel")
 				  .attr("text-anchor", "end")

@@ -59,11 +59,7 @@
                 margin = 50;
                 cxs = d3.scaleLinear().domain([1880,2020]).range([0,width]);
                 cys = d3.scaleLinear().domain([-2,2]).range([height,0]);
-				console.log(cxs(2020));
-				console.log(cxs(1880));
-				console.log(cys(-1.5));
-				console.log(cys(1.5));
-				console.log(cys(+"-1.5"));
+				
                 // get data and wait for result  
                 const data = await d3.csv("global_air_ocean_temp_deviation.csv");
 

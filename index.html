@@ -20,7 +20,7 @@
         <svg class="main-svg"></svg>
         <script>
 			function clear() {
-				d3.select("svg").html("");
+				d3.select("svg").selectAll("*").remove();
 			}
 			
             async function init() {

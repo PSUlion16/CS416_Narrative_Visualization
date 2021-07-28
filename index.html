@@ -31,10 +31,10 @@
                 const data = await d3.csv("global_air_ocean_temp_deviation.csv");
 
 				// create a tooltip
-				d3.select('body')
+				d3.select('svg')
 					.append('div')
 					.attr('id', 'tooltip')
-					.attr('style', 'position: absolute; opacity: 0; text-align: center; width: 60px; height: 28px;');
+					.attr('style', 'position: absolute; opacity: 0; text-align: center;');
 
                 // Create an SVG to place scatterplot on for data
                 // convert string to integer using '+' notation on the data element

@@ -22,7 +22,7 @@
 			// add a tooltip
 			var tooltip = d3.select("svg")
 			.append("div")
-			.style("opacity", 0)
+			.style("opacity", 1)
 			.attr("class", "tooltip")
 			.style("background-color", "white")
 			.style("border", "solid")
@@ -76,6 +76,7 @@
 						.on("mousemove", mousemove)
 						.on("mouseleave", mouseleave);
 				
+				// HELOOOOOOOOOO
 				// create y-axis
 				d3.select("svg").append("g")
 				  .attr("transform","translate("+margin+","+margin+")")

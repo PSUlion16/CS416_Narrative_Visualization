@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <script src='https://d3js.org/d3.v5.min.js'></script>
+		<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/main.css" />
     </head>
     
@@ -18,6 +19,39 @@
         </div>
         <svg style="display: block; margin-left: auto; margin-right: auto; width: 600px; height: 600px"></svg>
         <script>
+			// add a tooltip
+			var tooltip = d3.select("svg")
+			.append("div")
+			.style("opacity", 0)
+			.attr("class", "tooltip")
+			.style("background-color", "white")
+			.style("border", "solid")
+			.style("border-width", "1px")
+			.style("border-radius", "5px")
+			.style("padding", "10px")
+
+			// mousover function
+			var mouseover = function(d) {
+			tooltip
+			  .style("opacity", 1)
+			}
+			
+			// mouse move function
+			var mousemove = function(d) {
+			tooltip
+			  .html("Year: " + d.year)
+			  .style("left", (d3.mouse(this)[0]+90) + "px")
+			  .style("top", (d3.mouse(this)[1]) + "px")
+			}
+
+			// set tooltip opacity to 0 when mouse leaves
+			var mouseleave = function(d) {
+			tooltip
+			  .transition()
+			  .duration(200)
+			  .style("opacity", 0)
+			}
+		
             async function init() {
                 // Variables for the method
                 width = 500;
@@ -41,7 +75,10 @@
                         .selectAll().data(data).enter().append("circle")
                             .attr("cx", function(d) {return cxs(+d.year);})
                             .attr("cy", function(d) {return cys(+d.value);})
-                            .attr("r", 1);
+                            .attr("r", 1)
+						.on("mouseover", mouseover)
+						.on("mousemove", mousemove)
+						.on("mouseleave", mouseleave);
 				
 				// create y-axis
 				d3.select("svg").append("g")

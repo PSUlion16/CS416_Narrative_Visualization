@@ -119,14 +119,14 @@
 				d3.select("svg").append("text")
 				  .attr("class", "xlabel")
 				  .attr("text-anchor", "end")
-				  .attr("x", svgWidth)
-				  .attr("y", svgHeight - 6)
+				  .attr("x", (svgWidth/2) + svgMargin)
+				  .attr("y", svgHeight + svgMargin - 6)
 				  .text("Year");
 				  
 				d3.select("svg").append("text")
 				  .attr("class", "ylabel")
 				  .attr("text-anchor", "end")
-				  .attr("y", 6)
+				  .attr("y", (svgHeight/2) + svgMargin)
 				  .attr("dy", ".75em")
 				  .attr("transform", "rotate(-90)")
 				  .text("Deviation from Average in Celcius");  

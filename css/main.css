@@ -19,6 +19,7 @@ circle {
   text-align: center;
   color: black;
   font: Arial, sans-serif;
+  padding-bottom: 0px;
 }
 .main-buttons {
   text-align: center;
